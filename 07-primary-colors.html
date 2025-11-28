@@ -1,46 +1,82 @@
 <!doctype html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Exo d'Algo - Primary colors !</title>
     <link href="./bootstrap.min.css" rel="stylesheet" />
     <link href="./style.css" rel="stylesheet" />
 </head>
+
 <body>
-<a href="index.html">← revenir à la liste des exos</a>
-<div class="card">
-    <!--Instructions-->
-    <p class="h6 font-weight-bold text-center">#09 - Décomposition d'une couleur</p>
-    <div class="instructions">
-        <p class="text-secondary">Votre mission si toutefois vous l'acceptez, est d'afficher les couleurs primaires associées à la couleur secondaire sélectionnée</p>
+    <a href="index.html">← revenir à la liste des exos</a>
+    <div class="card">
+        <!--Instructions-->
+        <p class="h6 font-weight-bold text-center">#09 - Décomposition d'une couleur</p>
+        <div class="instructions">
+            <p class="text-secondary">Votre mission si toutefois vous l'acceptez, est d'afficher les couleurs primaires
+                associées à la couleur secondaire sélectionnée</p>
+            <br />
+            <p class="text-primary">Par exemple, <b>Violet</b> retournera le message : "Le violet est composé de bleu et
+                de rouge".<br>
+                <em>(À vous de jouer les "Picasso" et de proposer les mariages de couleur)</em>
+            </p>
+        </div>
+
         <br />
-        <p class="text-primary">Par exemple, <b>Violet</b> retournera le message : "Le violet est composé de bleu et de rouge".<br>
-        <em>(À vous de jouer les "Picasso" et de proposer les mariages de couleur)</em></p>
+        <!--Formulaire-->
+        <select name="color" id="colors">
+            <option value="">--Choisissez une couleur--</option>
+            <option value="green">Vert</option>
+            <option value="purple">Violet</option>
+            <option value="orange">Orange</option>
+        </select>
+        <button type="button" class="btn btn-primary" onclick="primaryColors()">
+            Découvrir la composition
+        </button>
     </div>
 
-    <br/>
-    <!--Formulaire-->
-    <select name="color" id="colors">
-        <option value="">--Choisissez une couleur--</option>
-        <option value="green">Vert</option>
-        <option value="purple">Violet</option>
-        <option value="orange">Orange</option>
-    </select>
-    <button type="button" class="btn btn-primary" onclick="primaryColors()">
-        Découvrir la composition
-    </button>
-</div>
+    <script type="text/javascript">
+        function primaryColors() {
+            let colors = document.getElementById("colors");
+            let secondaryColor = colors.options[colors.selectedIndex].value;
+            /* 
+            Maintenant pour obtenir la valeur de l'option choisie (unique) dans une selectbox on peut également simplement faire
+            let secondaryColor = document.getElementById("colors").value;
+            */
 
-<script type="text/javascript">
-    function primaryColors() {
-        let colors = document.getElementById("colors");
-        let secondaryColor = colors.options[colors.selectedIndex].value;
+            switch (secondaryColor) {
+                case 'green':
+                    alert("Le vert est composé de jaune et de bleu")
+                    break;
+                case 'purple':
+                    alert("Le violet est composé de bleu et de rouge")
+                    break;
+                case 'orange':
+                    alert("Le orange est composé de jaune et de rouge")
+                    break;
+                default:
+                    console.log(secondaryColor + " n'est pas une couleur reconnue par ce programme");
+            }
 
-        // CODE HERE !
-    }
-</script>
+            /* 
+            Version chaine if else :
+            
+            if (secondaryColor == "green"){
+                alert("Le vert est composé de bleu et de jaune");
+            } else if (secondaryColor == "purple"){
+                alert("Le violet est composé de bleu et de rouge");
+            } else{
+                alert("Le orange est composé de jaune et de rouge");
+            }
+            */
+
+            // exo ok
+        }
+    </script>
 </body>
+
 </html>
